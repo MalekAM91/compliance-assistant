@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>مساعد الالتزام</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Readex+Pro:wght@600;700&display=swap" rel="stylesheet">
@@ -275,9 +278,9 @@ q.addEventListener('input',()=>{q.style.height='auto';q.style.height=Math.min(q.
 $('#clear').addEventListener('click',()=>{hist=[];save();render()});
 $('#libbtn').addEventListener('click',()=>{const l=$('#lib');l.hidden=!l.hidden;if(!l.hidden){renderLib();$('#libq').focus()}});
 $('#libq').addEventListener('input',renderLib);
-fetch('updates.json').then(r=>r.json()).then(j=>{UPD=j.sort((a,b)=>String(b.date).localeCompare(String(a.date)))}).catch(()=>{});
-fetch('arts.json').then(r=>r.json()).then(j=>{ARTS=j}).catch(()=>{});
-fetch('kb.json').then(r=>r.json()).then(j=>{KB=j;$('#libbtn').textContent=`📚 مكتبة هيئة التأمين (${KB.length})`}).catch(()=>{$('#libbtn').hidden=true});
+fetch('updates.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{UPD=j.sort((a,b)=>String(b.date).localeCompare(String(a.date)))}).catch(()=>{});
+fetch('arts.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ARTS=j}).catch(()=>{});
+fetch('kb.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{KB=j;$('#libbtn').textContent=`📚 مكتبة هيئة التأمين (${KB.length})`}).catch(()=>{$('#libbtn').hidden=true});
 renderChips();render();
 if(window.claude&&claude.use){claude.use('sample').then(s=>{sample=s;if(!s)$('#off').style.display='block'}).catch(()=>{$('#off').style.display='block'})}
 else $('#off').style.display='block';
