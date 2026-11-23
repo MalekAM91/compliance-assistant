@@ -48,6 +48,7 @@ main{padding:20px max(5vw,16px) 220px}
 .err{border-color:var(--coral);color:var(--coral)}
 .composer{position:fixed;inset-inline:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:12px max(5vw,16px) calc(34px + env(safe-area-inset-bottom))}
 .composer .wrap{display:flex;gap:10px;align-items:flex-end}
+textarea::placeholder{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 textarea{flex:1;font:inherit;font-size:16px;resize:none;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card);color:var(--ink);max-height:160px;min-height:48px}
 .send{font:700 16px "IBM Plex Sans Arabic",sans-serif;background:var(--green);color:#fff;border:0;border-radius:12px;padding:0 20px;height:48px;cursor:pointer}
 .send:disabled{opacity:.5;cursor:default}
@@ -88,7 +89,7 @@ textarea{flex:1;font:inherit;font-size:16px;resize:none;border:1px solid var(--l
 <div class="composer">
 <div class="bar"><span id="topicLabel">المجال: الكل</span><button id="clear" type="button">محادثة جديدة</button></div>
 <form class="wrap" id="f">
-<textarea id="q" rows="1" placeholder="اكتب سؤالك… مثال: متى يلزم رفع بلاغ اشتباه لوحدة التحريات؟" aria-label="سؤالك"></textarea>
+<textarea id="q" rows="1" placeholder="اكتب سؤالك… مثال: مدد تسوية المطالبات" aria-label="سؤالك"></textarea>
 <button class="send" id="send" type="submit">إرسال</button>
 </form>
 <p class="rights">الحقوق محفوظة لعبدالملك العمّار</p>
